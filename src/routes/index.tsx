@@ -240,7 +240,11 @@ function Index() {
                 <MapPin className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="text-sm text-muted-foreground">Office</div>
-                  <div className="font-medium">Tranh Pham F&B Trading LLC</div>
+                  <div className="font-medium leading-relaxed">
+                    1st Floor, Al Masraf Bank<br />
+                    Al Quoz 1, Sheikh Zayed Road<br />
+                    Dubai, UAE
+                  </div>
                 </div>
               </div>
             </div>
@@ -274,10 +278,11 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5">
           <div className="rounded-3xl overflow-hidden border border-border/60 shadow-sm bg-card">
             <iframe
-              title="Tranh Pham location"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-122.4361%2C37.7591%2C-122.4061%2C37.7791&layer=mapnik"
+              title="Tranh Pham location — Al Masraf Bank, Al Quoz 1"
+              src="https://www.google.com/maps?q=Al+Masraf+Bank+Al+Quoz+1+Sheikh+Zayed+Road+Dubai&output=embed"
               className="w-full h-[320px] md:h-[420px] border-0"
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>
