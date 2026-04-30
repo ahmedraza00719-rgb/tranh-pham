@@ -39,11 +39,6 @@ const sections = [
   { id: "contact", label: "Contact" },
 ];
 
-function encode(data: Record<string, string>) {
-  return Object.keys(data)
-    .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
-    .join("&");
-}
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
