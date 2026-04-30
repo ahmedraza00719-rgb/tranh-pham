@@ -39,26 +39,23 @@ const sections = [
   { id: "contact", label: "Contact" },
 ];
 
-function encode(data: Record<string, string>) {
-  return Object.keys(data)
-    .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
-    .join("&");
-}
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
+  // Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const data: Record<string, string> = { "form-name": "contact" };
+    const data: Record<string, string> = {};
     formData.forEach((v, k) => {
       data[k] = typeof v === "string" ? v : "";
     });
 
-    // Basic validation
     if (!data.name?.trim() || !data.email?.trim() || !data.message?.trim()) {
       toast.error("Please fill in all fields.");
       return;
@@ -66,11 +63,12 @@ export default function App() {
 
     setSubmitting(true);
     try {
-      await fetch("/", {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode(data),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(data),
       });
+      if (!res.ok) throw new Error("Request failed");
       toast.success("Thank you! We'll be in touch shortly.");
       form.reset();
     } catch {
@@ -278,17 +276,12 @@ export default function App() {
           </div>
 
           <form
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
             className="bg-card rounded-3xl p-7 sm:p-8 border border-border/60 shadow-sm space-y-4"
           >
-            <input type="hidden" name="form-name" value="contact" />
             <p className="hidden">
               <label>
-                Don't fill this out: <input name="bot-field" />
+                Don't fill this out: <input name="_gotcha" />
               </label>
             </p>
             <div>
