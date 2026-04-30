@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, Mail, MapPin, ArrowRight, Leaf, Coffee, Package, Sparkles, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,10 +14,6 @@ import pho from "@/assets/pho.jpg";
 import coffee from "@/assets/coffee.jpg";
 import driedFruit from "@/assets/dried-fruit.jpg";
 import spices from "@/assets/spices.jpg";
-
-export const Route = createFileRoute("/")({
-  component: Index,
-});
 
 const products = [
   { img: fishSauce, name: "Red Boat Fish Sauce", desc: "Premium Nước Mắm — small-batch, naturally fermented." },
@@ -44,13 +39,45 @@ const sections = [
   { id: "contact", label: "Contact" },
 ];
 
-function Index() {
-  const [menuOpen, setMenuOpen] = useState(false);
+function encode(data: Record<string, string>) {
+  return Object.keys(data)
+    .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
+    .join("&");
+}
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Thank you! We'll be in touch shortly.");
-    (e.currentTarget as HTMLFormElement).reset();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data: Record<string, string> = { "form-name": "contact" };
+    formData.forEach((v, k) => {
+      data[k] = typeof v === "string" ? v : "";
+    });
+
+    // Basic validation
+    if (!data.name?.trim() || !data.email?.trim() || !data.message?.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode(data),
+      });
+      toast.success("Thank you! We'll be in touch shortly.");
+      form.reset();
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -251,23 +278,33 @@ function Index() {
           </div>
 
           <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
             className="bg-card rounded-3xl p-7 sm:p-8 border border-border/60 shadow-sm space-y-4"
           >
+            <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don't fill this out: <input name="bot-field" />
+              </label>
+            </p>
             <div>
               <label htmlFor="name" className="text-sm font-medium block mb-1.5">Name</label>
-              <Input id="name" required placeholder="Your name" className="rounded-xl h-11" />
+              <Input id="name" name="name" required placeholder="Your name" className="rounded-xl h-11" />
             </div>
             <div>
               <label htmlFor="email" className="text-sm font-medium block mb-1.5">Email</label>
-              <Input id="email" type="email" required placeholder="you@example.com" className="rounded-xl h-11" />
+              <Input id="email" name="email" type="email" required placeholder="you@example.com" className="rounded-xl h-11" />
             </div>
             <div>
               <label htmlFor="message" className="text-sm font-medium block mb-1.5">Message</label>
-              <Textarea id="message" required rows={4} placeholder="How can we help?" className="rounded-xl resize-none" />
+              <Textarea id="message" name="message" required rows={4} placeholder="How can we help?" className="rounded-xl resize-none" />
             </div>
-            <Button type="submit" size="lg" className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
-              Send Message
+            <Button type="submit" size="lg" disabled={submitting} className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+              {submitting ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>
