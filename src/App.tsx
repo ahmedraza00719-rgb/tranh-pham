@@ -315,11 +315,11 @@ export default function App() {
         <img
           src={hero}
           alt="Vietnamese grocery products flat lay"
-          className="w-full h-[280px] md:h-[420px] object-cover"
+          className="w-full h-[280px] md:h-[420px] object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
-        <div className="absolute inset-0 flex items-end">
-          <div className="mx-auto max-w-6xl w-full px-5 pb-10">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/20" />
+        <div className="absolute inset-0 flex items-center justify-center text-center">
+          <div className="px-5">
             <h2 className="font-serif text-4xl md:text-6xl font-bold text-foreground drop-shadow">Tranh Pham</h2>
             <p className="text-sm md:text-base text-foreground/80 mt-2">Authentic Vietnamese flavors · Reliable trade</p>
           </div>
