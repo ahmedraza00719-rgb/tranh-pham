@@ -243,14 +243,14 @@ export default function App() {
                 <Phone className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="text-sm text-muted-foreground">Phone</div>
-                  <a href="tel:+97143344114" className="font-medium hover:text-primary">04 334 4114</a>
+                  <a href="tel:+97145759367" className="font-medium hover:text-primary">(04) 575 9367</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="text-sm text-muted-foreground">Email</div>
-                  <a href="mailto:hello@tranhpham.com" className="font-medium hover:text-primary">hello@tranhpham.com</a>
+                  <a href="mailto:info@tranhpham.com" className="font-medium hover:text-primary">info@tranhpham.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
