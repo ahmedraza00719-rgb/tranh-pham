@@ -124,15 +124,17 @@ export default function App() {
 
       {/* Hero */}
       <section id="top" className="relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-5 pt-12 pb-16 md:pt-20 md:pb-24 grid md:grid-cols-2 gap-10 items-center">
+        <div className="mx-auto max-w-6xl px-5 pt-16 pb-20 md:pt-28 md:pb-32 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className="font-serif text-7xl sm:text-8xl md:text-9xl font-bold leading-[0.9] tracking-tight">
+              Tranh<br />Pham
+            </h1>
+          </div>
           <div className="space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-medium text-secondary-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Authentic Vietnamese Trading
             </span>
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-semibold leading-[1.05]">
-              Tranh Pham
-            </h1>
             <p className="text-base sm:text-lg text-muted-foreground max-w-md">
               Food & Beverage Trading LLC — bringing the rich, authentic flavors of Vietnam to your table and your business.
             </p>
@@ -146,16 +148,6 @@ export default function App() {
                 <a href="#contact">Get in Touch</a>
               </Button>
             </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-6 bg-secondary/60 rounded-[2.5rem] blur-2xl opacity-70" aria-hidden />
-            <img
-              src={hero}
-              alt="Vietnamese grocery products flat lay"
-              width={1536}
-              height={1024}
-              className="relative w-full h-auto rounded-3xl shadow-xl object-cover"
-            />
           </div>
         </div>
       </section>
@@ -251,14 +243,14 @@ export default function App() {
                 <Phone className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="text-sm text-muted-foreground">Phone</div>
-                  <a href="tel:+97143344114" className="font-medium hover:text-primary">04 334 4114</a>
+                  <a href="tel:+97145759367" className="font-medium hover:text-primary">(04) 575 9367</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="text-sm text-muted-foreground">Email</div>
-                  <a href="mailto:hello@tranhpham.com" className="font-medium hover:text-primary">hello@tranhpham.com</a>
+                  <a href="mailto:info@tranhpham.com" className="font-medium hover:text-primary">info@tranhpham.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
