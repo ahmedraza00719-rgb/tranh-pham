@@ -310,6 +310,22 @@ export default function App() {
         </div>
       </section>
 
+      {/* Footer banner */}
+      <div className="relative mt-8">
+        <img
+          src={hero}
+          alt="Vietnamese grocery products flat lay"
+          className="w-full h-[280px] md:h-[420px] object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="mx-auto max-w-6xl w-full px-5 pb-10">
+            <h2 className="font-serif text-4xl md:text-6xl font-bold text-foreground drop-shadow">Tranh Pham</h2>
+            <p className="text-sm md:text-base text-foreground/80 mt-2">Authentic Vietnamese flavors · Reliable trade</p>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="border-t border-border/50 py-8">
         <div className="mx-auto max-w-6xl px-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
