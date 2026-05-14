@@ -243,7 +243,7 @@ export default function App() {
                 <Phone className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="text-sm text-muted-foreground">Phone</div>
-                  <a href="tel:+97145759367" className="font-medium hover:text-primary">(04) 575 9367</a>
+                  <a href="tel:+97145759367" className="font-medium hover:text-primary">+971-04-575 9367</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -258,7 +258,7 @@ export default function App() {
                 <div>
                   <div className="text-sm text-muted-foreground">Office</div>
                   <div className="font-medium leading-relaxed">
-                    1st Floor, Al Masraf Bank<br />
+                    Office 101, 1st Floor, Al Masraf Bank<br />
                     Al Quoz 1, Sheikh Zayed Road<br />
                     Dubai, UAE
                   </div>
