@@ -243,7 +243,7 @@ export default function App() {
                 <Phone className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <div className="text-sm text-muted-foreground">Phone</div>
-                  <a href="tel:+97145759367" className="font-medium hover:text-primary">(04) 575 9367</a>
+                  <a href="tel:+97145759367" className="font-medium hover:text-primary">+971-04-575 9367</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -258,7 +258,7 @@ export default function App() {
                 <div>
                   <div className="text-sm text-muted-foreground">Office</div>
                   <div className="font-medium leading-relaxed">
-                    1st Floor, Al Masraf Bank<br />
+                    Office 101, 1st Floor, Al Masraf Bank<br />
                     Al Quoz 1, Sheikh Zayed Road<br />
                     Dubai, UAE
                   </div>
@@ -309,6 +309,22 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* Footer banner */}
+      <div className="relative mt-8">
+        <img
+          src={hero}
+          alt="Vietnamese grocery products flat lay"
+          className="w-full h-[280px] md:h-[420px] object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+        <div className="absolute inset-0 flex items-end">
+          <div className="mx-auto max-w-6xl w-full px-5 pb-10">
+            <h2 className="font-serif text-4xl md:text-6xl font-bold text-foreground drop-shadow">Tranh Pham</h2>
+            <p className="text-sm md:text-base text-foreground/80 mt-2">Authentic Vietnamese flavors · Reliable trade</p>
+          </div>
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-border/50 py-8">
